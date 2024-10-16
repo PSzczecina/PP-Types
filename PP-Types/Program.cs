@@ -14,9 +14,12 @@ string[] names = {
 // After last element should be ".".
 void PrintGroups(string[] t, int perLine)
 {
-
-    // Write required code.
-
+    for (int i = 0; i<t.Length; i++){
+        if (i != 0 && i % perLine == 0) Console.WriteLine("");
+        Console.Write(t[i]);
+        if (i == t.Length - 1) Console.Write(".");
+        else Console.Write(", ");
+    }
 }
 
 
@@ -27,8 +30,25 @@ void PrintGroups(string[] t, int perLine)
 
 void PrintColumns(string[] t, int perLine, int width)
 {
-
-    // Write required code.
+    //to na pewno da się schludniej zrobić. Napewno
+    for (int i = 0; i < t.Length; i++)
+    {
+        if (i != 0 && i % perLine == 0) Console.WriteLine("");
+        if (i % perLine != 0 && i % perLine != perLine) Console.Write("| ");
+        if (t[i].Length > width)
+        {
+            Console.Write(t[i].Substring(0,width));
+        }
+        else
+        {
+            Console.Write(t[i]);
+            for (int j = t[i].Length; j < width; j++)
+            {
+                Console.Write(" ");
+            }
+        }
+        if (i== t.Length - 1 && i % perLine != perLine-1) Console.Write("| ");
+    }
 
 }
 
